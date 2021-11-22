@@ -3,8 +3,8 @@ const scales = {
   C_Lydian: ["C", "D", "E", "Fs", "G", "A", "B"],
   Cs_Major: ["Cs", "Ds", "F", "Fs", "Gs", "As", "C"],
   E_Major: ["E", "Fs", "Gs", "A", "B", "Cs", "Ds"],
-  E_Major: ["E", "Fs", "Gs", "A", "B", "Cs", "Ds"],
   A_Minor_Melodic: ["A", "B", "C", "D", "E", "Fs", "Gs"],
+  A_Lydian: ["A", "B", "Cs", "Ds", "E", "Fs", "Gs"],
 };
 
 let sample = "piano";
@@ -68,6 +68,7 @@ arp.addEventListener("submit", (e) => {
   });
   currentSeq = unitObjects;
   console.log("Current sequence : ", currentSeq);
+  stopAll();
   unitObjects.forEach((unit) => {
     playSequence(unit);
   });
@@ -182,7 +183,6 @@ units.addEventListener("click", (e) => {
   }
 
   if (e.target.classList.contains("scaleSelect")) {
-    console.log(e.target.value);
     updateScale(arp1, scales[e.target.value]);
   }
 });
@@ -308,8 +308,324 @@ let demos = [
   [
     {
       n: "1",
+      tempo: 300,
+      notes: ["D1", "D1", "D1", "D1", "D1", "D1", "E1", "F1"],
+      random: false,
+    },
+    {
+      n: "2",
+      tempo: 300,
+      notes: [
+        "D3",
+        "-",
+        "-",
+        "-",
+        "-",
+        "-",
+        "E3",
+        "F3",
+        "D3",
+        "-",
+        "-",
+        "-",
+        "-",
+        "E3",
+        "F3",
+        "G3",
+      ],
+      random: false,
+    },
+    {
+      n: "3",
       tempo: 150,
-      notes: ["C2", "E2", "G2", "B2", "D3", "F2", "A3", "E3"],
+      notes: [
+        "G3",
+        "-",
+        "E3",
+        "-",
+        "A3",
+        "B4",
+        "-",
+        "F3",
+        "-",
+        "G3",
+        "C4",
+        "-",
+        "D4",
+        "-",
+        "E3",
+        "D3",
+      ],
+      random: false,
+    },
+    {
+      n: "4",
+      tempo: 600,
+      notes: ["E4", "E4", "D4", "G4", "F4", "E4", "F4", "C4"],
+      random: false,
+    },
+  ],
+
+  [
+    {
+      n: "1",
+      tempo: 300,
+      notes: [
+        "A2",
+        "A2",
+        "A2",
+        "A2",
+        "Cs2",
+        "Cs2",
+        "Cs2",
+        "Cs2",
+        "Fs2",
+        "Fs2",
+        "Fs2",
+        "Fs2",
+        "Ds2",
+        "Ds2",
+        "Ds2",
+        "Ds2",
+      ],
+      random: false,
+    },
+    {
+      n: "2",
+      tempo: 300,
+      notes: [
+        "Cs2",
+        "Cs2",
+        "Cs2",
+        "Gs2",
+        "Gs2",
+        "A3",
+        "Gs2",
+        "Gs2",
+        "B2",
+        "Fs3",
+        "E3",
+        "B2",
+        "Fs3",
+        "B2",
+        "Ds3",
+        "E3",
+      ],
+      random: false,
+    },
+    {
+      n: "3",
+      tempo: 300,
+      notes: [
+        "Ds3",
+        "Ds3",
+        "Ds3",
+        "Ds3",
+        "E3",
+        "E3",
+        "E3",
+        "E3",
+        "B3",
+        "B3",
+        "B3",
+        "B3",
+        "Gs3",
+        "Gs3",
+        "Gs3",
+        "Gs3",
+      ],
+      random: false,
+    },
+    {
+      n: "4",
+      tempo: 300,
+      notes: [
+        "B3",
+        "B3",
+        "B3",
+        "B3",
+        "A3",
+        "A3",
+        "A3",
+        "A3",
+        "Gs3",
+        "Gs3",
+        "Gs3",
+        "Gs3",
+        "A3",
+        "A3",
+        "A3",
+        "A3",
+      ],
+      random: false,
+    },
+  ],
+
+  [
+    {
+      n: "1",
+      tempo: 400,
+      notes: [
+        "F2",
+        "A2",
+        "E3",
+        "C3",
+        "Fs2",
+        "As2",
+        "F3",
+        "Cs3",
+        "F2",
+        "A2",
+        "E3",
+        "C3",
+        "Ds2",
+        "G2",
+        "D3",
+        "As3",
+      ],
+      random: false,
+    },
+    {
+      n: "2",
+      tempo: 400,
+      notes: [
+        "-",
+        "C3",
+        "C3",
+        "C3",
+        "F3",
+        "C3",
+        "C3",
+        "As2",
+        "C3",
+        "A2",
+        "F2",
+        "F2",
+        "F2",
+        "G2",
+        "-",
+        "-",
+      ],
+      random: false,
+    },
+  ],
+  [
+    {
+      n: "1",
+      tempo: 150,
+      notes: [
+        "F1",
+        "-",
+        "A2",
+        "C2",
+        "-",
+        "-",
+        "B2",
+        "-",
+        "F1",
+        "-",
+        "A2",
+        "C2",
+        "-",
+        "-",
+        "E3",
+        "-",
+      ],
+      random: false,
+    },
+    {
+      n: "2",
+      tempo: 150,
+      notes: [
+        "B2",
+        "C3",
+        "B2",
+        "-",
+        "C3",
+        "-",
+        "E3",
+        "-",
+        "-",
+        "-",
+        "G3",
+        "-",
+        "A3",
+        "-",
+        "C3",
+        "-",
+      ],
+      random: false,
+    },
+    {
+      n: "3",
+      tempo: 150,
+      notes: [
+        "A3",
+        "-",
+        "G3",
+        "F3",
+        "E3",
+        "-",
+        "D3",
+        "C3",
+        "B2",
+        "-",
+        "-",
+        "-",
+        "A2",
+        "-",
+        "-",
+        "-",
+      ],
+      random: false,
+    },
+  ],
+
+  [
+    {
+      n: "1",
+      tempo: 200,
+      notes: [
+        "Cs1",
+        "Cs2",
+        "Ds3",
+        "E3",
+        "-",
+        "-",
+        "-",
+        "-",
+        "Cs1",
+        "Cs2",
+        "Ds3",
+        "E3",
+        "-",
+        "-",
+        "-",
+        "-",
+      ],
+      random: false,
+    },
+    {
+      n: "2",
+      tempo: 400,
+      notes: [
+        "Ds1",
+        "E2",
+        "Cs3",
+        "Gs2",
+        "Cs2",
+        "Cs2",
+        "Ds2",
+        "E2",
+        "Fs3",
+        "Gs3",
+        "Cs3",
+        "E3",
+        "Gs3",
+        "E1",
+        "B2",
+        "Ds1",
+      ],
       random: false,
     },
   ],
@@ -323,7 +639,7 @@ function displayDemos() {
     newDemo.innerText = demos.indexOf(demo) + 1;
     demosArea.appendChild(newDemo);
     newDemo.addEventListener("click", () => {
-      console.log("playing demo " + newDemo.id, demo);
+      console.log("Loaded demo " + newDemo.id, demo);
       demosTitle.querySelector("span").innerText = " " + newDemo.id;
       playGroup(demo);
       openConfig(demo);
@@ -331,12 +647,18 @@ function displayDemos() {
   });
 }
 
-function openConfig(conf) {
+function resetAll() {
+  stopAll();
+  arp.reset();
   document.querySelectorAll(".arpUnit").forEach((i) => {
     if (i.id != "arp1") {
       i.remove();
     }
   });
+}
+
+function openConfig(conf) {
+  resetAll();
 
   if (conf[0]) {
     arp.arpTempo1.value = conf[0].tempo;
@@ -369,6 +691,10 @@ function openConfig(conf) {
       arp.arpNote4[i].value = conf[3].notes[i];
     }
   }
+
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  submitBtn.focus();
 }
 
 displayDemos();
