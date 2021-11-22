@@ -64,7 +64,6 @@ arp.addEventListener("submit", (e) => {
 let intervals = [];
 
 function playSequence(o) {
-  console.log("unit " + o.n, o);
   let c = 0;
   if (o.random) {
     let interval = setInterval(() => {
@@ -87,8 +86,18 @@ function playSequence(o) {
 
 // Add unit
 
-stopBtn.addEventListener("click", () => {
+function stopAll() {
   intervals.forEach((i) => clearInterval(i));
+}
+
+stopBtn.addEventListener("click", () => {
+  stopAll();
+});
+
+window.addEventListener("keydown", (event) => {
+  if (event.code === "Escape") {
+    stopAll();
+  }
 });
 
 addUnitBtn.addEventListener("click", () => {
@@ -165,9 +174,38 @@ let demos = [
       random: false,
     },
   ],
+  [
+    {
+      n: "1",
+      tempo: 300,
+      notes: ["C1", "E2", "G1", "A2"],
+      random: false,
+    },
+    {
+      n: "2",
+      tempo: 300,
+      notes: ["C3", "E3", "A3", "G3", "G2", "B3", "A3"],
+      random: false,
+    },
+    {
+      n: "3",
+      tempo: 600,
+      notes: ["E4", "G4", " ", "A4", "D4", "C4", " ", "B3"],
+      random: false,
+    },
+    {
+      n: "4",
+      tempo: 600,
+      notes: ["C2", "G2", "E2", "B2"],
+      random: false,
+    },
+  ],
 ];
 
 // playGroup(demos[0]);
 playDemo1.addEventListener("click", () => {
   playGroup(demos[0]);
+});
+playDemo2.addEventListener("click", () => {
+  playGroup(demos[1]);
 });

@@ -124,6 +124,7 @@ button {
 
 .notesMenu {
   position: absolute;
+  z-index: 10;
   background-color: #111;
   color: #fff;
   top: calc(100% + 1px);
@@ -170,7 +171,6 @@ button {
   padding: 0.5em;
   background-color: #fff;
   background-size: 100%;
-  background-size: 100%;
   background-repeat: no-repeat;
 }
 
@@ -196,7 +196,7 @@ button {
 #buttons button {
   all: unset;
   height: 1em;
-  width: 5.5em;
+  width: 1em;
   padding: 0.5em;
   background-color: #fff;
   display: flex;
@@ -204,7 +204,19 @@ button {
   align-items: center;
   margin: .5em;
   cursor: pointer;
-  transition: all .2s;
+  transition: background .2s;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+#buttons #addUnitBtn {
+  background-image: url(/img/add.svg);
+}
+#buttons #stopBtn {
+  background-image: url(/img/stop.svg);
+}
+#buttons button[type="submit"] {
+  background-image: url(/img/play.svg);
 }
 
 #buttons button:active {
