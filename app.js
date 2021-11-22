@@ -481,7 +481,7 @@ let demos = [
         "Ds2",
         "G2",
         "D3",
-        "As3",
+        "As2",
       ],
       random: false,
     },
