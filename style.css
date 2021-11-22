@@ -25,11 +25,11 @@ button {
 .keyboard {
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fill, minmax(2em, 1fr));
-  grid-auto-rows: 2em;
+  grid-template-columns: repeat(auto-fill, minmax(1em, 1fr));
+  grid-auto-rows: 1em;
   gap: 12px;
   padding: 1em;
-  max-width: 900px;
+  max-width: 28em;
   margin: 1em auto 2em;
 }
 
@@ -44,12 +44,13 @@ button {
   cursor: pointer;
   transition: all 0.2s ease-out;
   border-radius: 4px;
+  font-size: 1rem;
   color: transparent !important;
 }
 
 .keyAnim {
   background-color: orange !important;
-  transform: translateY(60px);
+  transform: translateY(400%);
   border-radius: 0;
 }
 
@@ -67,6 +68,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 2em;
 }
 
 .arpUnit {
@@ -95,6 +97,41 @@ button {
   height: 1em;
   text-align: center;
   flex: 1;
+}
+
+.scale {
+  align-self: stretch;
+  display: flex;
+  position: relative;
+}
+
+.scaleSelect {
+  all: unset;
+  position: relative;
+  background-color: #fff;
+  padding: 0.25em 0.5em;
+  flex: 1;
+  font-size: 1rem;
+}
+
+.scale::after {
+  position: absolute;
+  content: "";
+  background-image: url(/img/selectdown.svg);
+  right: 0.5em;
+  height: 100%;
+  width: 1em;
+  background-position: 50%;
+  /* background-repeat: no-repeat; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.5;
+  transition: all 0.2s;
+}
+
+.scale:hover::after {
+  background-position-y: 400%;
 }
 
 .pattern {
@@ -132,12 +169,11 @@ button {
   background-color: #111;
   color: #fff;
   bottom: calc(100%);
-  /* top: 0; */
   left: -1px;
   right: -1px;
-  padding: .5em;
-  border: 1px solid #fff;
-  border-bottom: none;
+  padding: 0.5em;
+  border: 1px dashed #fff;
+  border-bottom: 1px solid #222;
   display: none;
   box-shadow: 0 -100px 150px #000d;
 }
@@ -159,11 +195,11 @@ button {
   background-color: #0005;
   flex: 1;
   display: flex;
-  padding: .5em .25em;
+  padding: 0.5em 0.25em;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
 .notesMenu li.active {
@@ -208,21 +244,27 @@ button {
 #buttons button {
   all: unset;
   height: 1em;
-  width: 1em;
+  width: 2em;
   padding: 0.5em;
   background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: .5em;
+  margin: 0.5em;
   cursor: pointer;
-  transition: background .2s;
-  background-size: 100%;
+  transition: background 0.2s;
+  background-size: 50%;
+  background-position: 50%;
   background-repeat: no-repeat;
 }
 
 #buttons #addUnitBtn {
   background-image: url(/img/add.svg);
+}
+#buttons #saveSeqBtn {
+  background-image: url(/img/save.svg);
+  opacity: .1;
+  pointer-events: none;
 }
 #buttons #stopBtn {
   background-image: url(/img/stop.svg);
@@ -245,16 +287,22 @@ button:focus {
   outline-offset: 2px !important;
 }
 
-.removeUnitBtn {
-  all: unset;
-  cursor: pointer;
-  color: #fff5;
-  font-size: 1rem;
-  padding: .25em .5em;
+.dangerousButtons {
+  margin-top: auto;
+  display: flex;
+  gap: 1em;
 }
 
-.removeUnitBtn:hover,
-.removeUnitBtn:focus {
+.dangerousButtons button {
+  all: unset;
+  cursor: pointer;
+  color: #fff7;
+  font-size: 1rem;
+  padding: 0.25em 0.5em;
+}
+
+.dangerousButtons button:hover,
+.dangerousButtons button:focus {
   color: orangered;
 }
 
@@ -262,19 +310,33 @@ button:focus {
   display: none;
 }
 
-
 /* Demos */
 #demosArea {
   display: flex;
   justify-content: center;
-  margin: 2em auto;
+  margin: 0.5em auto 2em;
+  background-color: #111;
+  gap: 1em;
 }
+
+#demosTitle {
+  color: #fff;
+  font-size: 1.25rem;
+  margin: auto;
+  text-align: center;
+}
+
+#demosTitle span {
+  font-weight: ligher;
+  color: orange;
+}
+
 #demosArea button {
   all: unset;
   background-color: white;
-  padding: .25em 1.5em;
-  opacity: .7;
-  transition: all .2s;
+  padding: 0.25em 1.5em;
+  opacity: 0.7;
+  transition: all 0.2s;
   cursor: pointer;
 }
 

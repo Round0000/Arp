@@ -1,3 +1,12 @@
+const scales = {
+  C_Major: ["C", "D", "E", "F", "G", "A", "B"],
+  C_Lydian: ["C", "D", "E", "Fs", "G", "A", "B"],
+  Cs_Major: ["Cs", "Ds", "F", "Fs", "Gs", "As", "C"],
+  E_Major: ["E", "Fs", "Gs", "A", "B", "Cs", "Ds"],
+  E_Major: ["E", "Fs", "Gs", "A", "B", "Cs", "Ds"],
+  A_Minor_Melodic: ["A", "B", "C", "D", "E", "Fs", "Gs"],
+};
+
 let sample = "piano";
 
 function getNote(key) {
@@ -34,6 +43,8 @@ keyboard_keys.forEach((key) => {
   keys.push(key.id);
 });
 
+let currentSeq;
+
 function getRandom(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -55,7 +66,8 @@ arp.addEventListener("submit", (e) => {
     };
     unitObjects.push(data);
   });
-  console.log(unitObjects);
+  currentSeq = unitObjects;
+  console.log("Current sequence : ", currentSeq);
   unitObjects.forEach((unit) => {
     playSequence(unit);
   });
@@ -67,7 +79,11 @@ function playSequence(o) {
   let c = 0;
   if (o.random) {
     let interval = setInterval(() => {
-      playNote(o.notes[getRandom(0, o.notes.length - 1)]);
+      let noteToPlay = o.notes[getRandom(0, o.notes.length - 1)];
+      console.log("Random note :", noteToPlay);
+      if (noteToPlay.length > 1) {
+        playNote(noteToPlay);
+      }
     }, o.tempo);
     intervals.push(interval);
   } else {
@@ -100,19 +116,30 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
+saveSeqBtn.addEventListener("click", () => {
+  if (currentSeq) {
+    demos.push(currentSeq);
+    displayDemos();
+  }
+});
+
+function createUnit() {
+  const newUnit = document.createElement("DIV");
+  const id = document.querySelectorAll(".arpUnit").length + 1;
+  newUnit.classList.add("arpUnit");
+  newUnit.dataset.unit = id;
+  newUnit.id = "arp" + id;
+  newUnit.innerHTML = arp1.innerHTML
+    .replace("arpTempo1", "arpTempo" + id)
+    .replaceAll("arpRandom1", "arpRandom" + id)
+    .replaceAll("arpNote1", "arpNote" + id);
+  units.appendChild(newUnit);
+  addFocusEventListeners(newUnit);
+}
+
 addUnitBtn.addEventListener("click", () => {
   if (document.querySelectorAll(".arpUnit").length < 4) {
-    const newUnit = document.createElement("DIV");
-    const id = document.querySelectorAll(".arpUnit").length + 1;
-    newUnit.classList.add("arpUnit");
-    newUnit.dataset.unit = id;
-    newUnit.id = "arp" + id;
-    newUnit.innerHTML = arp1.innerHTML
-      .replace("arpTempo1", "arpTempo" + id)
-      .replaceAll("arpRandom1", "arpRandom" + id)
-      .replaceAll("arpNote1", "arpNote" + id);
-    units.appendChild(newUnit);
-    addFocusEventListeners(newUnit);
+    createUnit();
   }
 });
 
@@ -130,13 +157,22 @@ addFocusEventListeners(arp1);
 
 units.addEventListener("click", (e) => {
   if (e.target.classList.contains("removeUnitBtn")) {
-    e.target.parentElement.remove();
+    e.target.parentElement.parentElement.remove();
+  }
+  if (e.target.classList.contains("resetUnitBtn")) {
+    e.target.parentElement.parentElement
+      .querySelectorAll(".inputNote")
+      .forEach((el) => {
+        el.value = "";
+      });
+    e.target.parentElement.parentElement.querySelector(".inputTempo").value =
+      "";
   }
 
   if (e.target.dataset.note) {
-    e.target.classList.add('active');
+    e.target.classList.add("active");
     setTimeout(() => {
-      e.target.classList.remove('active');
+      e.target.classList.remove("active");
     }, 200);
 
     currentNoteInput.value =
@@ -144,9 +180,15 @@ units.addEventListener("click", (e) => {
 
     currentNoteInput.nextElementSibling.focus();
   }
+
+  if (e.target.classList.contains("scaleSelect")) {
+    console.log(e.target.value);
+    updateScale(arp1, scales[e.target.value]);
+  }
 });
 
 function playGroup(obj) {
+  stopAll();
   obj.forEach((unit) => {
     playSequence(unit);
   });
@@ -205,9 +247,76 @@ let demos = [
       random: false,
     },
   ],
+  [
+    {
+      n: "1",
+      tempo: 300,
+      notes: ["A3", "B3", "C3", "D3", "E3", "Fs3", "Gs3", "D2"],
+      random: false,
+    },
+    {
+      n: "2",
+      tempo: 300,
+      notes: [
+        "A1",
+        "A1",
+        "A1",
+        "A1",
+        "A1",
+        "A1",
+        "A1",
+        "D1",
+        "C1",
+        "C1",
+        "C1",
+        "C1",
+        "C1",
+        "C1",
+        "C1",
+        "G1",
+      ],
+      random: false,
+    },
+    {
+      n: "3",
+      tempo: 600,
+      notes: [
+        "B4",
+        "E4",
+        "Gs4",
+        "E4",
+        "-",
+        "E4",
+        "-",
+        "C4",
+        "A4",
+        "-",
+        "D4",
+        "E4",
+        "-",
+      ],
+      random: false,
+    },
+    {
+      n: "4",
+      tempo: 900,
+      notes: ["A4", "Gs4", "B4"],
+      random: false,
+    },
+  ],
+
+  [
+    {
+      n: "1",
+      tempo: 150,
+      notes: ["C2", "E2", "G2", "B2", "D3", "F2", "A3", "E3"],
+      random: false,
+    },
+  ],
 ];
 
 function displayDemos() {
+  demosArea.innerHTML = "";
   demos.forEach((demo) => {
     const newDemo = document.createElement("BUTTON");
     newDemo.id = demos.indexOf(demo) + 1;
@@ -215,9 +324,66 @@ function displayDemos() {
     demosArea.appendChild(newDemo);
     newDemo.addEventListener("click", () => {
       console.log("playing demo " + newDemo.id, demo);
+      demosTitle.querySelector("span").innerText = " " + newDemo.id;
       playGroup(demo);
+      openConfig(demo);
     });
   });
 }
 
+function openConfig(conf) {
+  document.querySelectorAll(".arpUnit").forEach((i) => {
+    if (i.id != "arp1") {
+      i.remove();
+    }
+  });
+
+  if (conf[0]) {
+    arp.arpTempo1.value = conf[0].tempo;
+    arp.arpRandom1.value = conf[0].random;
+    for (let i = 0; i < conf[0].notes.length; i++) {
+      arp.arpNote1[i].value = conf[0].notes[i];
+    }
+  }
+  if (conf[1]) {
+    createUnit();
+    arp.arpTempo2.value = conf[1].tempo;
+    arp.arpRandom2.value = conf[1].random;
+    for (let i = 0; i < conf[1].notes.length; i++) {
+      arp.arpNote2[i].value = conf[1].notes[i];
+    }
+  }
+  if (conf[2]) {
+    createUnit();
+    arp.arpTempo3.value = conf[2].tempo;
+    arp.arpRandom3.value = conf[2].random;
+    for (let i = 0; i < conf[2].notes.length; i++) {
+      arp.arpNote3[i].value = conf[2].notes[i];
+    }
+  }
+  if (conf[3]) {
+    createUnit();
+    arp.arpTempo4.value = conf[3].tempo;
+    arp.arpRandom4.value = conf[3].random;
+    for (let i = 0; i < conf[3].notes.length; i++) {
+      arp.arpNote4[i].value = conf[3].notes[i];
+    }
+  }
+}
+
 displayDemos();
+
+// Scale UI update
+
+function updateScale(unit, scale) {
+  unit.querySelectorAll(".noteRange").forEach((range) => {
+    range.innerHTML = "";
+    scale.forEach((note) => {
+      const newNote = document.createElement("LI");
+      newNote.innerText = note;
+      newNote.innerText.replaceAll("s", "#");
+      newNote.dataset.note = note;
+      range.appendChild(newNote);
+    });
+  });
+}

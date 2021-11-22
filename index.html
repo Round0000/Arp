@@ -62,6 +62,7 @@
     <form id="arp">
       <div id="buttons">
         <button type="button" id="addUnitBtn" aria-label="Add unit"></button>
+        <button type="button" id="saveSeqBtn" aria-label="Save sequence"></button>
         <button type="button" id="stopBtn" aria-label="Stop"></button>
         <button type="submit" aria-label="ARP"></button>
       </div>
@@ -93,6 +94,14 @@
                 value="true"
               />
             </div>
+          </div>
+          <div class="scale">
+            <select class="scaleSelect" name="arpScale1">
+              <option value="C_Major">C Major</option>
+              <option value="Cs_Major">C# Major</option>
+              <option value="E_Major">E Major</option>
+              <option value="A_Minor_Melodic">A Minor Melodic</option>
+            </select>
           </div>
           <div class="pattern">
             <input
@@ -240,7 +249,7 @@
               maxlength="3"
             />
             <div class="notesMenu">
-              <ul class="range" data-range="1">
+              <ul class="range noteRange" data-range="1">
                 <li data-note="C">C</li>
                 <li data-note="D">D</li>
                 <li data-note="E">E</li>
@@ -249,7 +258,7 @@
                 <li data-note="A">A</li>
                 <li data-note="B">B</li>
               </ul>
-              <ul class="range" data-range="2">
+              <ul class="range noteRange" data-range="2">
                 <li data-note="C">C</li>
                 <li data-note="D">D</li>
                 <li data-note="E">E</li>
@@ -258,7 +267,7 @@
                 <li data-note="A">A</li>
                 <li data-note="B">B</li>
               </ul>
-              <ul class="range" data-range="3">
+              <ul class="range noteRange" data-range="3">
                 <li data-note="C">C</li>
                 <li data-note="D">D</li>
                 <li data-note="E">E</li>
@@ -267,7 +276,7 @@
                 <li data-note="A">A</li>
                 <li data-note="B">B</li>
               </ul>
-              <ul class="range" data-range="4">
+              <ul class="range noteRange" data-range="4">
                 <li data-note="C">C</li>
                 <li data-note="D">D</li>
                 <li data-note="E">E</li>
@@ -281,7 +290,10 @@
               </ul>
             </div>
           </div>
-          <button type="button" class="removeUnitBtn">Remove unit</button>
+          <div class="dangerousButtons">
+            <button type="button" class="resetUnitBtn">Reset unit</button>
+            <button type="button" class="removeUnitBtn">Remove unit</button>
+          </div>
         </div>
 
       </div>
@@ -289,6 +301,7 @@
 
     </form>
 
+    <h2 id="demosTitle">Demo<span></span></h2>
     <div id="demosArea">
 
     </div>
