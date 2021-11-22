@@ -8,277 +8,261 @@
     <title>Piano</title>
   </head>
   <body>
-
-    <h1>Bonjour</h1>
-
     <div class="keyboard">
-      <button class="key n" id="2C">2C</button>
-      <button class="key s" id="2Cd">2C#</button>
-      <button class="key n" id="2D">2D</button>
-      <button class="key s" id="2Dd">2D#</button>
-      <button class="key n" id="2E">2E</button>
-      <button class="key n" id="2F">2F</button>
-      <button class="key s" id="2Fd">2F#</button>
-      <button class="key n" id="2G">2G</button>
-      <button class="key s" id="2Gd">2G#</button>
-      <button class="key n" id="2A">2A</button>
-      <button class="key s" id="2Ad">2A#</button>
-      <button class="key n" id="2B">2B</button>
-      <button class="key n" id="3C">3C</button>
-      <button class="key s" id="3Cd">3C#</button>
-      <button class="key n" id="3D">3D</button>
-      <button class="key s" id="3Dd">3D#</button>
-      <button class="key n" id="3E">3E</button>
-      <button class="key n" id="3F">3F</button>
-      <button class="key s" id="3Fd">3F#</button>
-      <button class="key n" id="3G">3G</button>
-      <button class="key s" id="3Gd">3G#</button>
-      <button class="key n" id="3A">3A</button>
-      <button class="key s" id="3Ad">3A#</button>
-      <button class="key n" id="3B">3B</button>
-      <button class="key n" id="4C">4C</button>
+      <button class="key n" id="C2">C2</button>
+      <button class="key s" id="Cs2">C#2</button>
+      <button class="key n" id="D2">D2</button>
+      <button class="key s" id="Ds2">D#2</button>
+      <button class="key n" id="E2">EE</button>
+      <button class="key n" id="F2">F2</button>
+      <button class="key s" id="Fs2">F#2</button>
+      <button class="key n" id="G2">G2</button>
+      <button class="key s" id="Gs2">G#2</button>
+      <button class="key n" id="A2">A2</button>
+      <button class="key s" id="As2">A#2</button>
+      <button class="key n" id="B2">B2</button>
+      <button class="key n" id="C3">C3</button>
+      <button class="key s" id="Cs3">C#3</button>
+      <button class="key n" id="D3">D3</button>
+      <button class="key s" id="Ds3">D#3</button>
+      <button class="key n" id="E3">EE</button>
+      <button class="key n" id="F3">F3</button>
+      <button class="key s" id="Fs3">F#3</button>
+      <button class="key n" id="G3">G3</button>
+      <button class="key s" id="Gs3">G#3</button>
+      <button class="key n" id="A3">A3</button>
+      <button class="key s" id="As3">A#3</button>
+      <button class="key n" id="B3">B3</button>
+      <button class="key n" id="C4">C4</button>
+      <button class="key s" id="Cs4">C#4</button>
+      <button class="key n" id="D4">D4</button>
+      <button class="key s" id="Ds4">D#4</button>
+      <button class="key n" id="E4">EE</button>
+      <button class="key n" id="F4">F4</button>
+      <button class="key s" id="Fs4">F#4</button>
+      <button class="key n" id="G4">G4</button>
+      <button class="key s" id="Gs4">G#4</button>
+      <button class="key n" id="A4">A4</button>
+      <button class="key s" id="As4">A#4</button>
+      <button class="key n" id="B4">B4</button>
+      <button class="key n" id="C5">C5</button>
+      <button class="key s" id="Cs5">C#5</button>
+      <button class="key n" id="D5">D5</button>
+      <button class="key s" id="Ds5">D#5</button>
+      <button class="key n" id="E5">EE</button>
+      <button class="key n" id="F5">F5</button>
+      <button class="key s" id="Fs5">F#5</button>
+      <button class="key n" id="G5">G5</button>
+      <button class="key s" id="Gs5">G#5</button>
+      <button class="key n" id="A5">A5</button>
+      <button class="key s" id="As5">A#5</button>
+      <button class="key n" id="B5">B5</button>
     </div>
 
     <form id="arp">
-      <div class="content">
-        <!-- Arp 1 -->
-      <div id="arp1" class="arp">
-        <input
-          type="number"
-          name="arp1"
-          min="100"
-          max="3000"
-          step="10"
-          tabindex="1"
-        />
-        <div class="noteSelection">
-          <label class="noteLabel">
-            1
-            <input type="checkbox" name="notesArp1" value="0" />
-          </label>
-          <label class="noteLabel">
-            2
-            <input type="checkbox" name="notesArp1" value="1" />
-          </label>
-          <label class="noteLabel">
-            3
-            <input type="checkbox" name="notesArp1" value="2" />
-          </label>
-          <label class="noteLabel">
-            4
-            <input type="checkbox" name="notesArp1" value="3" />
-          </label>
-          <label class="noteLabel">
-            5
-            <input type="checkbox" name="notesArp1" value="4" />
-          </label>
-          <label class="noteLabel">
-            6
-            <input type="checkbox" name="notesArp1" value="5" />
-          </label>
-          <label class="noteLabel">
-            7
-            <input type="checkbox" name="notesArp1" value="6" />
-          </label>
+      <div id="buttons">
+        <button type="button" id="addUnitBtn">Add unit</button>
+        <button type="button" id="stopBtn">Stop</button>
+        <button type="submit">ARP</button>
+      </div>
+      <div id="units">
+        <div class="arpUnit" data-unit="1" id="arp1">
+          <div class="tempoAndRandom">
+            <input
+              type="number"
+              class="inputTempo"
+              name="arpTempo1"
+              placeholder="tempo"
+              required
+              min="150"
+              max="9999"
+              step="10"
+            />
+            <div class="randomOrStraight">
+              <input
+                type="radio"
+                class="inputRandom"
+                name="arpRandom1"
+                value="false"
+                checked
+              />
+              <input
+                type="radio"
+                class="inputRandom"
+                name="arpRandom1"
+                value="true"
+              />
+            </div>
+          </div>
+          <div class="pattern">
+            <input
+              type="text"
+              class="inputNote"
+              autocomplete="off"
+              placeholder="..."
+              name="arpNote1"
+              maxlength="3"
+            />
+            <input
+              type="text"
+              class="inputNote"
+              autocomplete="off"
+              placeholder="..."
+              name="arpNote1"
+              maxlength="3"
+            />
+            <input
+              type="text"
+              class="inputNote"
+              autocomplete="off"
+              placeholder="..."
+              name="arpNote1"
+              maxlength="3"
+            />
+            <input
+              type="text"
+              class="inputNote"
+              autocomplete="off"
+              placeholder="..."
+              name="arpNote1"
+              maxlength="3"
+            />
+            <input
+              type="text"
+              class="inputNote"
+              autocomplete="off"
+              placeholder="..."
+              name="arpNote1"
+              maxlength="3"
+            />
+            <input
+              type="text"
+              class="inputNote"
+              autocomplete="off"
+              placeholder="..."
+              name="arpNote1"
+              maxlength="3"
+            />
+            <input
+              type="text"
+              class="inputNote"
+              autocomplete="off"
+              placeholder="..."
+              name="arpNote1"
+              maxlength="3"
+            />
+            <input
+              type="text"
+              class="inputNote"
+              autocomplete="off"
+              placeholder="..."
+              name="arpNote1"
+              maxlength="3"
+            />
+            <input
+              type="text"
+              class="inputNote"
+              autocomplete="off"
+              placeholder="..."
+              name="arpNote1"
+              maxlength="3"
+            />
+            <input
+              type="text"
+              class="inputNote"
+              autocomplete="off"
+              placeholder="..."
+              name="arpNote1"
+              maxlength="3"
+            />
+            <input
+              type="text"
+              class="inputNote"
+              autocomplete="off"
+              placeholder="..."
+              name="arpNote1"
+              maxlength="3"
+            />
+            <input
+              type="text"
+              class="inputNote"
+              autocomplete="off"
+              placeholder="..."
+              name="arpNote1"
+              maxlength="3"
+            />
+            <input
+              type="text"
+              class="inputNote"
+              autocomplete="off"
+              placeholder="..."
+              name="arpNote1"
+              maxlength="3"
+            />
+            <input
+              type="text"
+              class="inputNote"
+              autocomplete="off"
+              placeholder="..."
+              name="arpNote1"
+              maxlength="3"
+            />
+            <input
+              type="text"
+              class="inputNote"
+              autocomplete="off"
+              placeholder="..."
+              name="arpNote1"
+              maxlength="3"
+            />
+            <input
+              type="text"
+              class="inputNote"
+              autocomplete="off"
+              placeholder="..."
+              name="arpNote1"
+              maxlength="3"
+            />
+            <div class="notesMenu">
+              <ul class="range" data-range="1">
+                <li data-note="C">C</li>
+                <li data-note="D">D</li>
+                <li data-note="E">E</li>
+                <li data-note="F">F</li>
+                <li data-note="G">G</li>
+                <li data-note="A">A</li>
+                <li data-note="B">B</li>
+              </ul>
+              <ul class="range" data-range="2">
+                <li data-note="C">C</li>
+                <li data-note="D">D</li>
+                <li data-note="E">E</li>
+                <li data-note="F">F</li>
+                <li data-note="G">G</li>
+                <li data-note="A">A</li>
+                <li data-note="B">B</li>
+              </ul>
+              <ul class="range" data-range="3">
+                <li data-note="C">C</li>
+                <li data-note="D">D</li>
+                <li data-note="E">E</li>
+                <li data-note="F">F</li>
+                <li data-note="G">G</li>
+                <li data-note="A">A</li>
+                <li data-note="B">B</li>
+              </ul>
+            </div>
+          </div>
+          <button type="button" class="removeUnitBtn">Remove unit</button>
         </div>
-        <div class="specifyNotesArray">
-          <label class="notesArray">
-            <textarea placeholder="Write custom pattern here" name="notesArray1" maxlength="28" cols="12"  minlength="1"></textarea>
-          </label>
-        </div>
-        <label class="randomCheckbox">
-          Random
-          <input type="checkbox" name="randomArp1" />
-        </label>
-        <div class="toneCheckbox">
-          <span>Tone</span>
-          <label>Low<input type="radio" name="toneArp1" value="low" /></label>
-          <label>High<input type="radio" name="toneArp1" value="high" /></label>
-          <label>Full<input type="radio" name="toneArp1" value="full" /></label>
-        </div>
+        
       </div>
 
-      <!-- Arp 2 -->
-      <div id="arp2" class="arp">
-        <input
-          type="number"
-          name="arp2"
-          min="100"
-          max="3000"
-          step="10"
-          tabindex="2"
-        />
-        <div class="noteSelection">
-          <label class="noteLabel">
-            1
-            <input type="checkbox" name="notesArp2" value="0" />
-          </label>
-          <label class="noteLabel">
-            2
-            <input type="checkbox" name="notesArp2" value="1" />
-          </label>
-          <label class="noteLabel">
-            3
-            <input type="checkbox" name="notesArp2" value="2" />
-          </label>
-          <label class="noteLabel">
-            4
-            <input type="checkbox" name="notesArp2" value="3" />
-          </label>
-          <label class="noteLabel">
-            5
-            <input type="checkbox" name="notesArp2" value="4" />
-          </label>
-          <label class="noteLabel">
-            6
-            <input type="checkbox" name="notesArp2" value="5" />
-          </label>
-          <label class="noteLabel">
-            7
-            <input type="checkbox" name="notesArp2" value="6" />
-          </label>
-        </div>
-        <div class="specifyNotesArray">
-          <label class="notesArray">
-            <textarea placeholder="Write custom pattern here" name="notesArray2" maxlength="28" cols="12"  minlength="1"></textarea>
-          </label>
-        </div>
-        <label class="randomCheckbox">
-          Random
-          <input type="checkbox" name="randomArp2" />
-        </label>
-        <div class="toneCheckbox">
-          <span>Tone</span>
-          <label>Low<input type="radio" name="toneArp2" value="low" /></label>
-          <label>High<input type="radio" name="toneArp2" value="high" /></label>
-          <label>Full<input type="radio" name="toneArp2" value="full" /></label>
-        </div>
-      </div>
-
-      <!-- Arp 3 -->
-      <div id="arp3" class="arp">
-        <input
-          type="number"
-          name="arp3"
-          min="100"
-          max="3000"
-          step="10"
-          tabindex="3"
-        />
-        <div class="noteSelection">
-          <label class="noteLabel">
-            1
-            <input type="checkbox" name="notesArp3" value="0" />
-          </label>
-          <label class="noteLabel">
-            2
-            <input type="checkbox" name="notesArp3" value="1" />
-          </label>
-          <label class="noteLabel">
-            3
-            <input type="checkbox" name="notesArp3" value="2" />
-          </label>
-          <label class="noteLabel">
-            4
-            <input type="checkbox" name="notesArp3" value="3" />
-          </label>
-          <label class="noteLabel">
-            5
-            <input type="checkbox" name="notesArp3" value="4" />
-          </label>
-          <label class="noteLabel">
-            6
-            <input type="checkbox" name="notesArp3" value="5" />
-          </label>
-          <label class="noteLabel">
-            7
-            <input type="checkbox" name="notesArp3" value="6" />
-          </label>
-        </div>
-        <div class="specifyNotesArray">
-          <label class="notesArray">
-            <textarea placeholder="Write custom pattern here" name="notesArray3" maxlength="28" cols="12"  minlength="1"></textarea>
-          </label>
-        </div>
-        <label class="randomCheckbox">
-          Random
-          <input type="checkbox" name="randomArp3" />
-        </label>
-
-        <div class="toneCheckbox">
-          <span>Tone</span>
-          <label>Low<input type="radio" name="toneArp3" value="low" /></label>
-          <label>High<input type="radio" name="toneArp3" value="high" /></label>
-          <label>Full<input type="radio" name="toneArp3" value="full" /></label>
-        </div>
-      </div>
-
-      <!-- Arp 4 -->
-      <div id="arp4" class="arp">
-        <input
-          type="number"
-          name="arp4"
-          min="100"
-          max="3000"
-          step="10"
-          tabindex="4"
-        />
-        <div class="noteSelection">
-          <label class="noteLabel">
-            1
-            <input type="checkbox" name="notesArp4" value="0" />
-          </label>
-          <label class="noteLabel">
-            2
-            <input type="checkbox" name="notesArp4" value="1" />
-          </label>
-          <label class="noteLabel">
-            3
-            <input type="checkbox" name="notesArp4" value="2" />
-          </label>
-          <label class="noteLabel">
-            4
-            <input type="checkbox" name="notesArp4" value="3" />
-          </label>
-          <label class="noteLabel">
-            5
-            <input type="checkbox" name="notesArp4" value="4" />
-          </label>
-          <label class="noteLabel">
-            6
-            <input type="checkbox" name="notesArp4" value="5" />
-          </label>
-          <label class="noteLabel">
-            7
-            <input type="checkbox" name="notesArp4" value="6" />
-          </label>
-        </div>
-        <div class="specifyNotesArray">
-          <label class="notesArray">
-            <textarea placeholder="Write custom pattern here" name="notesArray4" maxlength="28" cols="12"  minlength="1"></textarea>
-          </label>
-        </div>
-        <label class="randomCheckbox">
-          Random
-          <input type="checkbox" name="randomArp4" />
-        </label>
-        <div class="toneCheckbox">
-          <span>Tone</span>
-          <label>Low<input type="radio" name="toneArp4" value="low" /></label>
-          <label>High<input type="radio" name="toneArp4" value="high" /></label>
-          <label>Full<input type="radio" name="toneArp4" value="full" /></label>
-        </div>
-      </div>
-      </div>
-      <button type="submit">Arp</button>
+      
     </form>
-    <button id="saveBtn">Save</button>
 
-    <div class="demos">
-        <h2>Demos</h2>
-        <div id="demoBtns">
-        </div>
-        <code id="codeDisplay"></code>
+    <div id="demos">
+      <button id="playDemo1">01</button>
     </div>
 
     <script src="app.js"></script>

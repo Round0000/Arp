@@ -6,9 +6,17 @@
 
 body {
   font-family: "Atkinson Hyperlegible", "Tahoma", sans-serif;
-  background: linear-gradient(to top, #111, rgb(3, 2, 6));
-  height: 100vh;
+  background-color: #000;
+  font-size: 1.25rem;
 }
+
+input,
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Keyboard */
 
 .keyboard {
   display: grid;
@@ -50,117 +58,203 @@ body {
   color: snow;
 }
 
-#arp .content {
+/* Arp */
+#units {
   display: flex;
-  margin: 1em auto;
-  gap: 1em;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.arp {
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    padding: .5em;
-}
-
-.arp label {
-  display: flex;
-  align-items: baseline;
-  margin: .25em;
-  justify-content: space-between;
-  border: 1px solid #333;
-  background-color: #cde;
-  padding: .25em .5em;
-}
-
-.noteSelection {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-
-.noteLabel {
-  width: 2.8em;
-  display: flex;
-  justify-content: space-between;
-}
-
-#arp input[type="number"] {
-  padding: 0.25em;
-  font-size: 1.1rem;
-  margin-bottom: 1em;
-}
-
-#arp button {
-  padding: 0.25em 2em;
-  height: 2.5em;
-  font-size: 1.1rem;
-}
-
-#arp button[type="submit"] {
-  display: block;
-  margin: auto;
-}
-
-.arp .randomCheckbox {
-  margin-top: 1em;
-  background-color: #eee;
-}
-
-.toneCheckbox span {
-  margin-top: 1em;
-  display: block;
-  font-weight: bold;
-  text-align: center;
-}
-
-#saveBtn {
-  display: block;
-  margin: 1.5em auto;
-  font-size: 1rem;
-  padding: .5em 1em;
-}
-
-label.notesArray {
-  padding: 0;
-  display: flex;
-  background-color: transparent;
-  border: none;
-  justify-content: center;
-}
-
-label.notesArray textarea {
-  font-size: 1rem;
-  padding: .25em .7em;  
-  resize: none;
-}
-
-/* Demos */
-.demos {
-  margin-top: 3em;
-  background-color: snow;
+.arpUnit {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1em 1em 2em;
+  gap: 1em;
+  width: max-content;
+  margin: 1em;
+  border: 1px dashed #fff;
+  padding: 1em;
 }
 
-#demoBtns {
+.tempoAndRandom {
+  display: flex;
+  justify-content: space-between;
+  align-self: stretch;
+  gap: 1em;
+}
+
+.inputTempo {
+  all: unset;
+  padding: 0.5em;
+  background-color: #fff;
+  height: 1em;
+  text-align: center;
+  flex: 1;
+}
+
+.pattern {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5em;
+}
+
+.inputNote {
+  all: unset;
+  height: 1em;
+  width: 2em;
+  padding: 0.5em;
+  background-color: #fff;
+  text-align: center;
+  position: relative;
+}
+
+.inputNote:placeholder-shown {
+  background-color: #111;
+  caret-color: #fff;
+}
+
+.inputNote:placeholder-shown + .inputNote {
+  display: none;
+}
+
+.inputNote:focus ~ .notesMenu {
+  display: block;
+}
+
+.notesMenu {
+  position: absolute;
+  background-color: #111;
+  color: #fff;
+  top: calc(100% + 1px);
+  left: -1px;
+  right: -1px;
+  padding: .5em;
+  border: 1px solid #fff;
+  border-top: none;
+  display: none;
+}
+
+.notesMenu:hover {
+  display: block;
+}
+
+.notesMenu ul {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  font-size: 1rem;
+  font-weight: light;
+}
+
+.notesMenu li {
+  border: 1px solid #fff;
+  background-color: #0005;
+  flex: 1;
+  display: flex;
+  padding: .5em .25em;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.randomOrStraight {
+  display: flex;
+  gap: 0.5em;
+}
+
+.inputRandom {
+  all: unset;
+  height: 1em;
+  width: 1em;
+  padding: 0.5em;
+  background-color: #fff;
+  background-size: 100%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.inputRandom:checked {
+  background-color: rgb(174, 209, 245);
+}
+
+.inputRandom[value="true"] {
+  background-image: url(/img/random.svg);
+}
+
+.inputRandom[value="false"] {
+  background-image: url(/img/straight.svg);
+}
+
+#buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: auto;
 }
 
-.demoBtn {
+#buttons button {
   all: unset;
+  height: 1em;
+  width: 5.5em;
+  padding: 0.5em;
+  background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: .5em 1em;
   margin: .5em;
-  border: 2px solid #333;
-  border-radius: 6px;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+#buttons button:active {
+  background-color: rgb(174, 209, 245);
+}
+
+input {
+  outline: 4px solid transparent;
+}
+
+input:focus,
+button:focus {
+  outline: 2px solid rgb(174, 209, 245) !important;
+  outline-offset: 2px !important;
+}
+
+.removeUnitBtn {
+  all: unset;
+  cursor: pointer;
+  color: #fff5;
+  font-size: 1rem;
+  padding: .25em .5em;
+}
+
+.removeUnitBtn:hover,
+.removeUnitBtn:focus {
+  color: orangered;
+}
+
+#arp1 .removeUnitBtn {
+  display: none;
 }
 
 
+/* Demos */
+#demos {
+  display: flex;
+  justify-content: center;
+  margin: 2em auto;
+}
+#demos button {
+  all: unset;
+  background-color: white;
+  padding: .25em 1.5em;
+  opacity: .7;
+  transition: all .2s;
+  cursor: pointer;
+}
+
+#demos button:hover,
+#demos button:focus {
+  opacity: 1;
+}
