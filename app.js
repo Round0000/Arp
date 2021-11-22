@@ -134,6 +134,11 @@ units.addEventListener("click", (e) => {
   }
 
   if (e.target.dataset.note) {
+    e.target.classList.add('active');
+    setTimeout(() => {
+      e.target.classList.remove('active');
+    }, 200);
+
     currentNoteInput.value =
       e.target.dataset.note + e.target.parentElement.dataset.range;
 
@@ -202,10 +207,17 @@ let demos = [
   ],
 ];
 
-// playGroup(demos[0]);
-playDemo1.addEventListener("click", () => {
-  playGroup(demos[0]);
-});
-playDemo2.addEventListener("click", () => {
-  playGroup(demos[1]);
-});
+function displayDemos() {
+  demos.forEach((demo) => {
+    const newDemo = document.createElement("BUTTON");
+    newDemo.id = demos.indexOf(demo) + 1;
+    newDemo.innerText = demos.indexOf(demo) + 1;
+    demosArea.appendChild(newDemo);
+    newDemo.addEventListener("click", () => {
+      console.log("playing demo " + newDemo.id, demo);
+      playGroup(demo);
+    });
+  });
+}
+
+displayDemos();
